@@ -1,0 +1,26 @@
+.card{
+    max-width: 500px;
+    background-color: #CAF4FF;
+    padding: 20px;
+    margin: 0px auto;
+    color: #524C42;
+}
+
+mat-form-field{
+    margin-top: 50;
+    margin-left: 50px;
+    margin-right: 50px;
+    min-width: 300px;
+}
+
+.nextBut{
+    margin-top: 1000;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.butDiv{
+    align-self: center;
+    padding-left: 50px;
+    margin: 0px auto;
+}

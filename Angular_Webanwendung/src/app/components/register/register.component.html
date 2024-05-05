@@ -1,0 +1,198 @@
+<div class="outerDiv">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Registrierung</mat-card-title>
+      <mat-card-subtitle>Neuen Account erstellen</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <!-- First registration Page for the buisness data -->
+      <div *ngIf="CurrentPage == 0">
+        <form [formGroup]="registerFormBuisness">
+
+          <mat-form-field>
+            <mat-label>Firmenname</mat-label>
+            <input matInput placeholder="Ihr Firmenname eingeben" required="true" formControlName="buisnessName"
+              [(ngModel)]="BuisnessToAdd.Name">
+            <mat-error
+              *ngIf="this.registerFormBuisness.get('buisnessName')?.touched && this.registerFormBuisness.get('buisnessName')?.hasError('required')">
+              Name erforderlich
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Unternehmensbranche</mat-label>
+            <input type="text" placeholder="Auswählen oder neue hinzufügen" required="true"
+              formControlName="industryType" matInput [matAutocomplete]="auto" [(ngModel)]="BuisnessToAdd.IndustryType">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              @for (types of buisnessTypes; track buisnessTypes) {
+              <mat-option [value]="types">{{types}}</mat-option>
+              }
+            </mat-autocomplete>
+            <mat-error
+              *ngIf="this.registerFormBuisness.get('industryType')?.touched && this.registerFormBuisness.get('industryType')?.hasError('required')">
+              Branche erforderlich
+            </mat-error>
+          </mat-form-field>
+
+          <button class="nextBut" mat-button color="primary" (click)="switchPage(1)"
+            [disabled]="!registerFormBuisness.valid">Weiter</button>
+
+        </form>
+
+      </div>
+
+      <!-- Second Registration Page for the user data -->
+      <div *ngIf="CurrentPage == 1">
+        <form [formGroup]="registerFormUser">
+
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Nachname eingeben" formControlName="lastname" required="true"
+              [(ngModel)]="UserToAdd.LastName">
+            <mat-error
+              *ngIf="this.registerFormUser.get('lastname')?.touched && this.registerFormUser.get('lastname')?.hasError('required')">
+              Name erforderlich
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Vorname</mat-label>
+            <input matInput placeholder="Vorname eingeben" formControlName="firstname" required="true"
+              [(ngModel)]="UserToAdd.FirstName">
+            <mat-error
+              *ngIf="this.registerFormUser.get('firstname')?.touched && this.registerFormUser.get('firstname')?.hasError('required')">
+              Vorname erforderlich
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Benutzername</mat-label>
+            <input matInput placeholder="Benutzername eingeben" formControlName="username" required="true"
+              [(ngModel)]="UserToAdd.UserName">
+            <mat-error
+              *ngIf="this.registerFormUser.get('username')?.touched && this.registerFormUser.get('username')?.hasError('required')">
+              Benutezername erforderlich
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Passwort</mat-label>
+            <input matInput [type]="HidePassword ? 'password' : 'text'" formControlName="password" required="true"
+              [(ngModel)]="UserToAdd.Password">
+            <button mat-icon-button matSuffix (click)="HidePassword = !HidePassword" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="HidePassword">
+              <mat-icon>{{HidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error
+              *ngIf="this.registerFormUser.get('password')?.touched && this.registerFormUser.get('password')?.hasError('required')">
+              Passwort erforderlich
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Passwort wiederholen</mat-label>
+            <input matInput [type]="HidePasswordRepetition ? 'password' : 'text'" formControlName="passwordConfirm"
+              required="true">
+            <button mat-icon-button matSuffix (click)="HidePasswordRepetition = !HidePasswordRepetition"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="HidePasswordRepetition">
+              <mat-icon>{{HidePasswordRepetition ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error
+              *ngIf="this.registerFormUser.get('passwordConfirm')?.touched && this.registerFormUser.get('passwordConfirm')?.hasError('required')">
+              Passwort Bestätigung erforderlich
+            </mat-error>
+          </mat-form-field>
+
+          <mat-error
+            *ngIf="this.registerFormUser.get('passwordConfirm')?.dirty && this.registerFormUser.hasError('passwordsNotMatching')">
+            Passwörter stimmen nicht überein!
+          </mat-error>
+
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email (optional)" required="false" formControlName="email"
+              [(ngModel)]="UserToAdd.Email">
+            <mat-error *ngif="this.registerFormUser.get('email')?.hasError('email')">
+              Email ist nicht valide
+            </mat-error>
+          </mat-form-field>
+
+          <button class="nextBut" mat-button color="primary" (click)="switchPage(0)">Zurück</button>
+          <button class="nextBut" mat-button color="primary" (click)="switchRegisterUserPage(2)"
+            [disabled]="!registerFormUser.valid">Weiter</button>
+
+        </form>
+      </div>
+
+      <!-- Third registration page for the summary and consent forms -->
+      <div *ngIf="CurrentPage == 2">
+
+        <div class="table_component">
+          <table>
+            <caption>Unternehmensdaten</caption>
+            <tbody>
+              <tr>
+                <td>Unternehmensname</td>
+                <td>{{BuisnessToAdd.Name}}</td>
+              </tr>
+              <tr>
+                <td>Branche</td>
+                <td>{{BuisnessToAdd.IndustryType}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table_component">
+          <table>
+            <caption>Nutzerdaten</caption>
+            <tbody>
+              <tr>
+                <td>Vorname</td>
+                <td>{{UserToAdd.FirstName}}</td>
+              </tr>
+              <tr>
+                <td>Nachname</td>
+                <td>{{UserToAdd.LastName}}</td>
+              </tr>
+              <tr>
+                <td>Benutzername</td>
+                <td>{{UserToAdd.UserName}}</td>
+              </tr>
+              <tr>
+                <td>Passwort</td>
+                <td>
+                  <div class="sumPassword-container">
+                    <p #password class="password_field"> {{UserToAdd.Password}}</p>
+                    <button (click)="togglePassword()"> <mat-icon>visibility</mat-icon></button>
+                  </div>
+                </td>
+              </tr>
+              <tr *ngIf="UserToAdd.Email != '' ">
+                <td>Email</td>
+                <td>{{UserToAdd.Email}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <h4>Einverständniserklärung und Nutzerbedingungen</h4>
+          <mat-checkbox [(ngModel)]="checkedAGB">Ich versichere die AGBs gelesen zu haben und stimme diesen
+            zu</mat-checkbox>
+          <mat-checkbox [(ngModel)]="checkedDataSafety">Ich habe die Datenschutzerklärung gelesen und bin damit
+            einverstanden</mat-checkbox>
+        </div>
+
+        <button class="nextBut" mat-button color="primary" (click)="switchPage(1)">Zurück</button>
+        <button class="nextBut" mat-button color="primary"
+          [disabled]="checkedAGB == false || checkedDataSafety == false" (click)="register()">Weiter</button>
+
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+</div>

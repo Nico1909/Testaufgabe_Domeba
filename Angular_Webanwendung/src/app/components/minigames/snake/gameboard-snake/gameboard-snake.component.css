@@ -1,0 +1,24 @@
+table,
+td {
+  table-layout: inherit;
+}
+table {
+  border: 2px solid black;
+  border-collapse: collapse;
+  background-color: #CAF4FF;
+  width: 50%;
+  height: 50%;
+  margin: 0px auto;
+}
+
+td {
+  border: 2px solid black;
+}
+
+td.snake {
+  background-color: #524C42;
+}
+
+td.food {
+  background-color: #5AB2FF;
+}

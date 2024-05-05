@@ -1,0 +1,68 @@
+.card {
+    max-width: 500px;
+    background-color: #CAF4FF;
+    padding: 20px;
+    margin: 0px auto;
+    color: #524C42;
+}
+
+mat-form-field {
+    margin-top: 50;
+    margin-left: 50px;
+    margin-right: 50px;
+    min-width: 300px;
+}
+
+.nextBut {
+    margin-top: 1000;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.table_component {
+    margin-top: 50px;
+    overflow: auto;
+    width: 100%;
+}
+
+.table_component table {
+    border: 1px solid #524C42;
+    height: 100%;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    text-align: left;
+}
+
+.table_component caption {
+    caption-side: top;
+    text-align: left;
+}
+
+.table_component td {
+    border: 1.5px solid #5AB2FF;
+    background-color: #CAF4FF;
+    color: #524C42;
+    padding: 5px;
+}
+
+.password_field {
+    -webkit-text-security: disc;
+}
+
+.sumPassword-container {
+    display: flex;
+}
+
+.sumPassword-container button {
+    margin-left: 15px;
+}
+
+.mat-mdc-snack-bar-container {
+    &.blue-snackbar {
+        --mdc-snackbar-container-color: #2196f3;
+        --mat-mdc-snack-bar-button-color: #fff;
+        --mdc-snackbar-supporting-text-color: #fff;
+    }
+}

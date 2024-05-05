@@ -1,0 +1,10 @@
+<ng-container class="container" *ngIf="game$ | async as game">
+  <div>
+    <h1>Snake</h1>
+    <h2>Points: {{game.snakePos.length - 1}}</h2>
+    <h2 *ngIf="game.lost">Du hast verloren! <button (click)="newGame()" class="btn">Wiederholen?</button></h2>
+  </div>
+  <app-gameboard-snake [width]="game.width" [height]="game.height" [food]="game.food">
+    <app-snake [pos]="game.snakePos"></app-snake>
+  </app-gameboard-snake>
+</ng-container>

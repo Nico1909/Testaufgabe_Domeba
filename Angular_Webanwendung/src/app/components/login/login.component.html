@@ -1,0 +1,57 @@
+<div class="outerDiv">
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Login</mat-card-title>
+            <mat-card-subtitle>Bitte Login-Daten eingeben!</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="loginForm">
+
+                <mat-form-field>
+                    <mat-label>Login mit Benutzername</mat-label>
+                    <input matInput placeholder="Benutzername eingeben" formControlName="userName"
+                        [(ngModel)]="userForLogin.UserName">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Login mit Email</mat-label>
+                    <input matInput placeholder="Email (optional)" required="false" formControlName="email"
+                        [(ngModel)]="userForLogin.Email">
+                    <mat-error *ngIf="this.loginForm.get('email')?.hasError('email')">
+                        Email ist nicht valide
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-error *ngIf="this.loginForm.hasError('loginDataNeeded')">
+                    Nutzername oder Email sind erforderlich!
+                </mat-error>
+
+                <mat-form-field>
+                    <mat-label>Passwort</mat-label>
+                    <input matInput [type]="HidePassword ? 'password' : 'text'" formControlName="password"
+                        required="true" [(ngModel)]="userForLogin.Password">
+                    <button mat-icon-button matSuffix (click)="HidePassword = !HidePassword"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="HidePassword">
+                        <mat-icon>{{HidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error
+                        *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
+                        Passwort erforderlich
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="butDiv">
+                    <button class="loginBut" mat-button color="primary" [disabled]="!loginForm.valid"
+                        (click)="login()">Einloggen</button>
+                    <button class="loginBut" mat-button color="primary" (click)="loginWithoutAccount()">Ohne Account
+                        einloggen</button>
+                </div>
+
+
+            </form>
+
+        </mat-card-content>
+
+    </mat-card>
+</div>

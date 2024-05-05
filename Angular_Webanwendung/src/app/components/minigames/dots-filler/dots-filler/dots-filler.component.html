@@ -1,0 +1,18 @@
+<div class="outerDiv">
+    <h1>
+        Färbe die Punkte ein
+    </h1>
+
+    <div class="game-container">
+        <div #dotRefs class="dot" *ngFor="let dot of dots" (mouseover)="changeStyle(dotRefs)"></div>
+    </div>
+    <div class="result">
+        <div *ngIf="isGameStarted && !isGameEnded">{{counter}}</div>
+        <div *ngIf="!isGameStarted && !isGameEnded">Bewege deine Maus in die Box, um das Spiel zu starten</div>
+        <div *ngIf="isGameStarted && isGameEnded && isWon">Gewonnen!</div>
+        <div *ngIf="isGameStarted && isGameEnded && !isWon">
+            Oh nein! Du hast {{ cleanCount }} Punkte nicht eingefärbt!
+        </div>
+        <button *ngIf="isGameStarted && isGameEnded" (click)="newGame()" class="btn">Wiederholen?</button>
+    </div>
+</div>

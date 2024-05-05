@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "CyL2O+yeiN/4X4+MRR3rOt1QZuNnDpnGfx0W6yra1vE=",
+  "Source": "NetCore_Webanwendung",
+  "BasePath": "_content/NetCore_Webanwendung",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

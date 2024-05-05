@@ -1,0 +1,52 @@
+<mat-toolbar>
+  <button mat-icon-button aria-label="Menu icon" (click)="ToggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1>Testaufgabe für domeba</h1>
+</mat-toolbar>
+
+<mat-sidenav-container autosize>
+  <mat-sidenav [opened]="true" mode="side" #sideNav>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['']">
+        <span class="entry">
+          <mat-icon>house</mat-icon>
+          <span>ReadMe</span>
+        </span>
+      </a>
+      <a mat-list-item *ngIf="getStaticIsUserLogin()" [routerLink]="['/games/snake']">
+        <span class="entry">
+          <mat-icon>house</mat-icon>
+          <span>Snake</span>
+        </span>
+      </a>
+      <a mat-list-item *ngIf="getStaticIsUserLogin()" [routerLink]="['/games/hangman']">
+        <span class="entry">
+          <mat-icon>house</mat-icon>
+          <span>Hangman</span>
+        </span>
+      </a>
+      <a mat-list-item *ngIf="getStaticIsUserLogin()" [routerLink]="['/games/dots-filler']">
+        <span class="entry">
+          <mat-icon>house</mat-icon>
+          <span>Punkte färben</span>
+        </span>
+      </a>
+      <a mat-list-item [routerLink]="['/login']">
+        <span class="entry">
+          <mat-icon>house</mat-icon>
+          <span>Login</span>
+        </span>
+      </a>
+      <a mat-list-item [routerLink]="['/register']">
+        <span class="entry">
+          <mat-icon>house</mat-icon>
+          <span>Account erstellen</span>
+        </span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
