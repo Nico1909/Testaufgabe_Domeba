@@ -4845,11 +4845,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Programmierung\\cSharp\\WebApi\\Domeba_Aufgabe\\NetCore_Webanwendung\\NetCore_Webanwendung\\NetCore_Webanwendung.csproj",
+      "projectUniqueName": "E:\\domeba\\Domeba_Aufgabe\\NetCore_Webanwendung\\NetCore_Webanwendung\\NetCore_Webanwendung.csproj",
       "projectName": "NetCore_Webanwendung",
-      "projectPath": "E:\\Programmierung\\cSharp\\WebApi\\Domeba_Aufgabe\\NetCore_Webanwendung\\NetCore_Webanwendung\\NetCore_Webanwendung.csproj",
+      "projectPath": "E:\\domeba\\Domeba_Aufgabe\\NetCore_Webanwendung\\NetCore_Webanwendung\\NetCore_Webanwendung.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "E:\\Programmierung\\cSharp\\WebApi\\Domeba_Aufgabe\\NetCore_Webanwendung\\NetCore_Webanwendung\\obj\\",
+      "outputPath": "E:\\domeba\\Domeba_Aufgabe\\NetCore_Webanwendung\\NetCore_Webanwendung\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "f7oKL1wEujF2q+1SQH184A7IEMmwDemZjavC0TheIWBCzPz9Op9ANonlaPnNkbbqdS5NwaJha50qvS8kEZ8ekQ==",
+  "dgSpecHash": "FS4akNSMLMwd2VluwojcYlijEXev/wwICwm8E5dCitRkVA73Efoy8bAbrsfT5leMR7tBruDkSvF4EYojwHbwBA==",
   "success": true,
-  "projectFilePath": "E:\\Programmierung\\cSharp\\WebApi\\Domeba_Aufgabe\\NetCore_Webanwendung\\NetCore_Webanwendung\\NetCore_Webanwendung.csproj",
+  "projectFilePath": "E:\\domeba\\Domeba_Aufgabe\\NetCore_Webanwendung\\NetCore_Webanwendung\\NetCore_Webanwendung.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
